@@ -13,7 +13,11 @@
 import marimo
 
 __generated_with = "0.10.6"
-app = marimo.App(width="medium")
+app = marimo.App(
+    width="medium",
+    app_title="Schnittanalyse",
+    auto_download=["html", "ipynb"],
+)
 
 
 @app.cell
@@ -23,6 +27,12 @@ def _():
     from scenedetect import open_video, SceneManager
     from scenedetect.detectors import ContentDetector
     return ContentDetector, SceneManager, mo, open_video, pd
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""# Szenendetektion""")
+    return
 
 
 @app.cell
